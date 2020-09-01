@@ -1,5 +1,6 @@
 <?php
-echo "PHP,curriculum";
+echo "PHP<br/>";
+echo "curriculum<br/>";
 ?>
 
 <?php
