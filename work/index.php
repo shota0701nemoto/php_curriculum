@@ -22,4 +22,25 @@
  echo $number / $number_2;
 ?>
 
+<?php
+ $num = 5;
+ echo $num;
+ $num = 10;
+ echo $num;
+?>
+
+<?php
+ $num = 5;
+ echo $num;
+ $num = $num + 10;
+ echo $num;
+?>
+
+<?php
+ $num++;
+ echo ++$num; 
+ echo $num++;
+ echo $num; 
+?>
+
 
