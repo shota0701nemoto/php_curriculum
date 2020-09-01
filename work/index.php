@@ -58,7 +58,7 @@
 
 <?php
  $num = rand(1,10);
-   if ($num / 2 ) {
+   if ($num % 2 == 0 ) {
    echo '偶数';
  } else {
    echo '奇数';
@@ -93,4 +93,16 @@
  } else {
     echo '不合格';    
  } 
+?>
+
+
+
+<?php
+
+$age = 20;
+$job = "エンジニア";
+$pref = "東京";
+
+$array = array('age' => '20', 'job' => 'エンジニア', 'pref' => '東京');
+
 ?>
