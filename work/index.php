@@ -1,3 +1,3 @@
 <?php
-echo "PHPカリキュラムです";
+echo "PHP,curriculum";
 ?>
