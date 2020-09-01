@@ -44,3 +44,15 @@
 ?>
 
 
+<?php
+ $name1 = "根本";
+ $name2 = "翔伍";
+echo $name1 . $name2;
+$name1 .= "PHP";
+echo $name1 . $name2;
+ ?>
+
+
+<?php
+echo "こんにちは！ \"'今' 私は’PHP’を勉強しています";
+?>
