@@ -1,6 +1,6 @@
 <?php
-  echo "PHP<br/>";
-  echo "curriculum<br/>";
+  echo 'PHP<br/>';
+  echo 'curriculum<br/>';
 ?>
 
 <?php
@@ -13,7 +13,7 @@
 
 <?php
 echo '<br/>';
-  $name = "Hello, World!<br/>";
+  $name = 'Hello, World!<br/>';
     echo $name;
   $number = 1;
   $number_2 = 2;
@@ -50,8 +50,8 @@ echo '<br/>';
 
 <?php
 echo '<br/>';
-  $name1 = "根本";
-  $name2 = "翔伍";
+  $name1 = '根本';
+  $name2 = '翔伍';
     echo $name1 . $name2;
   $name1 .= "PHP";
     echo $name1 . $name2;
@@ -95,13 +95,13 @@ echo '<br/>';
  $score2 = rand(0,100);
    if ($score1 > 60 && $score2 < 60 ){
      echo '合格';
-     } else if ($score1 + $score2 > 130 ){
-    echo '合格';    
-     } else if ($score1 + $score2 > 100 && (score1 > 90 or score2 > 90)  ){
-    echo '合格';    
-     } else {
-    echo '不合格';    
-     } 
+       } else if ($score1 + $score2 > 130 ){
+     echo '合格';    
+       } else if ($score1 + $score2 > 100 && (score1 > 90 or score2 > 90)  ){
+     echo '合格';    
+       } else {
+     echo '不合格';    
+       } 
 ?>
 
 
@@ -165,13 +165,13 @@ $emp = ['山田' => ['age' => '20','pref' => '東京'],
         '鈴木' => ['age' => '25','pref' => '千葉']
        ];
 foreach ($emp as $key => $val ) {   # 配列のキーを$key、値を$valに順番入れる）
-          echo "name:".$key;
-          echo "<br>";
-          echo "age:".$val['age'];
-          echo "<br>";
-          echo "pref:".$val['pref'];
-          echo "<br>";
-          echo "<br>";
+          echo 'name:'.$key;
+          echo '<br>';
+          echo 'age:'.$val['age'];
+          echo '<br>';
+          echo 'pref:'.$val['pref'];
+          echo '<br>';
+          echo '<br>';
         } 
 ?>
 
@@ -186,11 +186,44 @@ echo "<br>";
 ?>
 
 <?php
-function greeting($price) {
-$msg = $price . '円の税込価格は' . $price * 1.1 . '円です';
-    return $msg; 
-};
-$msg = greeting(100);
-echo $msg;
+  function greeting($price) {
+    $msg = $price . '円の税込価格は' . $price * 1.1 . '円です';
+    $error_msg = '数字を入力してください';
+    $error_msg2 = '空白です';
+      if ( is_numeric($price) ) {
+        return $msg; 
+          } else {
+            return $error_msg;     
+          };
+      if ( empty($price) == false ){
+        return $error_msg2;
+      }  
+    };
+  $msg = greeting(100);
+  echo $msg;
+  echo '<br>';
 ?>
 
+<?php
+  $array = array();
+  $array = array('name'=>'山田', 'pref'=>'東京');
+?>
+
+<?php
+  $var =  "";
+    if ( empty($var) ){
+      echo 'OK';
+    } else {
+      echo 'NG';    
+    };
+    echo '<br>';
+?>
+
+<?php
+  $var =  ['name'=>'山田', 'pref'=>'東京'];
+    if ( is_array($var) ){
+      echo 'OK';
+    } else {
+      echo 'NG';    
+    };
+?>
