@@ -7,7 +7,7 @@
   echo 7 + 1;
   echo 10 - 10;
   echo 10 * 10;
-  echo 10 / 10;
+  echo 10 % 10;
 ?>
 
 
@@ -20,7 +20,7 @@ echo '<br/>';
     echo $number + $number_2;
     echo $number - $number_2;
     echo $number * $number_2;
-    echo $number / $number_2;
+    echo $number % $number_2;
 ?>
 
 <?php
@@ -55,10 +55,10 @@ echo '<br/>';
     echo $name1 . $name2;
   $name1 .= "PHP";
     echo $name1 . $name2;
+    echo '<br/>';
  ?>
 
 <?php
-echo '<br/>';
   echo "こんにちは！ \"'今' 私は’PHP’を勉強しています";
 ?>
 
@@ -177,15 +177,20 @@ foreach ($emp as $key => $val ) {   # 配列のキーを$key、値を$valに順�
 
 <?php
   for ($num = 1; $num <= 50; $num++) {
-    $v_num = strval($num);
-    echo strstr($v_num, 3);
-      if ( strstr($v_num, 3) or $num / 3 === 0 ){
+    $v_num = ( strval($num) );
+      if ( strpos($v_num, '3') == true or $num % 3 == 0 ){
         echo $num;
-    }
-}
- 
+      }
+  }
+echo "<br>";
+?>
 
-
-
+<?php
+function greeting($price) {
+$msg = $price . '円の税込価格は' . $price * 1.1 . '円です';
+    return $msg; 
+};
+$msg = greeting(100);
+echo $msg;
 ?>
 
