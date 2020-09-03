@@ -10,7 +10,6 @@
   echo 10 % 10;
 ?>
 
-
 <?php
 echo '<br/>';
   $name = 'Hello, World!<br/>';
@@ -46,7 +45,6 @@ echo '<br/>';
    echo $num++;
    echo $num; 
 ?>
-
 
 <?php
 echo '<br/>';
@@ -103,8 +101,6 @@ echo '<br/>';
      echo '不合格';    
        } 
 ?>
-
-
 
 <?php
 echo '<br/>';
@@ -224,6 +220,73 @@ echo "<br>";
     if ( is_array($var) ){
       echo 'OK';
     } else {
-      echo 'NG';    
+      echo 'NG';  
     };
 ?>
+
+<?php
+  echo '<br>';   
+  $name = $_POST['name'];
+  $age = $_POST['age'];
+    if ( $age >= 120 ) {
+        echo 'エラー';
+    } else {
+        echo $name . 'さんは' . $age . '歳です';
+     } 
+?>
+
+<!DOCTYPE html>
+<html lang = “ja”>
+<head>
+<meta charset = “UTF-8”>
+<title>GET・POST練習</title>
+</head>
+<body>
+<h1>データの送信</h1>
+<form action="index.php" method="post">
+<label>名前</label><input type="text" name="name"><br/>
+<label>年齢</label><input type="number" name="age"><br/>
+<input type="submit" value="送信">
+</form>
+</body>
+</html>
+
+<?php
+  $list = [
+    [ 'id' => '1','password' => '111', 'name' =>  '田中'],
+    [ 'id' => 2,'password' => '222', 'name' =>  '佐藤'],
+    [ 'id' => 3,'password' => 333, 'name' =>  '山田'],
+  ];
+  echo '<br>';
+  $list_id = $_POST['id'];
+  $password = $_POST['password'];
+  #var_dump($list_id);
+  #var_dump($password);
+  #var_dump($list[0]['id']);
+  #var_dump($list[0]['password']);
+  #var_dump($list[0]['name']);
+  foreach ($list as $key => $value)
+  { if ( $list[0]['id'] == $list_id && $list[0]['password'] == $password ) {
+      echo $list[0]['name'];
+        break;
+    } else {
+        echo 'エラー';
+    }
+  }
+?>
+
+<!DOCTYPE html>
+<html lang = “ja”>
+<head>
+<meta charset = “UTF-8”>
+<title>GET・POST練習</title>
+</head>
+<body>
+<h1>データの送信</h1>
+<form action="index.php" method="post">
+<label>ID</label><input type="number" name="id"><br/>
+<label>パスワード</label><input type="number" name="password"><br/>
+<input type="submit" value="送信">
+</form>
+</body>
+</html>
