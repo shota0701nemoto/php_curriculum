@@ -290,3 +290,38 @@ echo "<br>";
 </form>
 </body>
 </html>
+
+<?php
+$file = "./sample.json";
+$json = file_get_contents($file);
+$data = json_decode($json, true);
+foreach ($data[0] as $key => $value) {
+  echo $value['name'];
+  echo '<br>';
+};
+?>
+
+<pre>
+<?php
+$file = "./sample.json";
+$json = file_get_contents($file);
+$data = json_decode($json, true);
+$object = [];
+
+foreach ($data[0] as $key => $value) {
+  $array = [];
+  foreach ($value['city'] as $city_key => $city_value) {
+    
+    #市区町村が取れてる
+    #var_dump($city_value['city']);
+    array_push($array , $city_value['city'] );
+  }
+  #var_dump($value['name']);各都道府県が取れてる
+  $object[ $value['name'] ] = $array;
+  #array_push($array ,[ $value['name'] ]);
+  #var_dump($object);
+}
+#var_dump(array_merge ( $object,  ) );
+var_dump($object);
+?>
+</pre>
