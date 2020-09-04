@@ -321,3 +321,25 @@ foreach ($data[0] as $key => $value) {
   var_dump($object);
 ?>
 </pre>
+
+<pre>
+<?php
+  $file = "./sample.json";
+  $json = file_get_contents($file);
+  $data = json_decode($json, true);
+  foreach ($data[0] as $key => $value) {
+    $array = [];
+      foreach ($value['city'] as $city_key => $city_value) {
+      #市区町村が取れてる
+      #var_dump($city_value['city']);
+      array_push($array , $city_value['city'] );
+      }
+    #各都道府県が取れてる
+    #var_dump($value['name']);
+    $object = [];
+    $object[ $value['name'] ] = $array;
+    
+  }
+  var_dump($object);
+?>
+</pre>
