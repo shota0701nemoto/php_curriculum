@@ -307,21 +307,17 @@ $file = "./sample.json";
 $json = file_get_contents($file);
 $data = json_decode($json, true);
 $object = [];
-
 foreach ($data[0] as $key => $value) {
   $array = [];
   foreach ($value['city'] as $city_key => $city_value) {
-    
     #市区町村が取れてる
     #var_dump($city_value['city']);
     array_push($array , $city_value['city'] );
   }
-  #var_dump($value['name']);各都道府県が取れてる
+  #各都道府県が取れてる
+  #var_dump($value['name']);
   $object[ $value['name'] ] = $array;
-  #array_push($array ,[ $value['name'] ]);
-  #var_dump($object);
 }
-#var_dump(array_merge ( $object,  ) );
 var_dump($object);
 ?>
 </pre>
