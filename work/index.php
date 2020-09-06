@@ -338,7 +338,6 @@ foreach ($data[0] as $key => $value) {
     #var_dump($value['name']);
     $object = [];
     $object[ $value['name'] ] = $array;
-    
   }
   var_dump($object);
 ?>
