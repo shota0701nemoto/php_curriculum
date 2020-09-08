@@ -76,11 +76,11 @@ echo '<br/>';
  $score = rand(0,100);
    if ($score > 0 && $score < 49 ){
      echo '不可';
-       } else if ($score > 50 && $score < 69 ){
+       } else if ($score > 50 && $score < 69 ) {
      echo '可';    
-       } else if ($score > 70 && $score < 79 ){
+       } else if ($score > 70 && $score < 79 ) {
      echo '良';    
-       } else if ($score > 80 && $score < 99 ){
+       } else if ($score > 80 && $score < 99 ) {
      echo '優';    
        } else {
      echo '満点';    
@@ -322,32 +322,10 @@ foreach ($data[0] as $key => $value) {
 ?>
 </pre>
 
-<pre>
-<?php
-  $file = "./sample.json";
-  $json = file_get_contents($file);
-  $data = json_decode($json, true);
-  foreach ($data[0] as $key => $value) {
-    $array = [];
-      foreach ($value['city'] as $city_key => $city_value) {
-      #市区町村が取れてる
-      #var_dump($city_value['city']);
-      array_push($array , $city_value['city'] );
-      }
-    #各都道府県が取れてる
-    #var_dump($value['name']);
-    $object = [];
-    $object[ $value['name'] ] = $array;
-  }
-  var_dump($object);
-?>
-</pre>
-
 <?php
   $message = htmlspecialchars($_GET['message'], ENT_QUOTES, 'UTF-8');
   echo $message;
   print_r($_GET);
-
 ?>
 
 <!DOCTYPE html>
@@ -364,3 +342,36 @@ foreach ($data[0] as $key => $value) {
 </form>
 </body>
 </html>
+
+<pre>
+<?php
+  $file = "./sample.json";
+  $json = file_get_contents($file);
+  $data = json_decode($json, true);
+  #地方の配列を準備し、あとで連想配列に直す。
+  $Chihou = array(
+    '北海道地方' => ['県名' => [], '市町村名' => []],
+    '東北地方' => ['県名' => [], '市町村名' => []],
+    '関東道地方' => ['県名' => [], '市町村名' => []],
+    '中部道地方' => ['県名' => [], '市町村名' => []],
+    '近畿道地方' => ['県名' => [], '市町村名' => []],
+    '四国道地方' => ['県名' => [], '市町村名' => []],
+    '中国道地方' => ['県名' => [], '市町村名' => []],
+    '九州道地方' => ['県名' => [], '市町村名' => []]
+  );
+  #var_dump($Chihou['北海道地方']['県名']['市町村名']);
+  #var_dump($Chihou['北海道地方']['県名']);
+  foreach ($data[0] as $key => $value) {
+    foreach ($value['city'] as $city_key => $city_value) {
+      #市区町村が取れてる
+      #var_dump($city_value['city']);
+    }
+    $Chihou['北海道地方']['県名']['市町村名'] = $city_value['city'];
+    
+    #各都道府県が取れてる
+    #var_dump($value['name']);
+  }
+  $Chihou['北海道地方']['県名'] = $value['name'];
+  var_dump($Chihou)
+?>
+</pre>
