@@ -345,37 +345,52 @@ foreach ($data[0] as $key => $value) {
 
 <pre>
 <?php
-  $file = "./sample.json";
-  $json = file_get_contents($file);
-  $data = json_decode($json, true);
-  #地方の配列を準備し、あとで連想配列に直す。
-  $Chihou = array(
-    '北海道地方' => ['県名' => [], '市町村名' => []],
-    '東北地方' => ['県名' => [], '市町村名' => []],
-    '関東道地方' => ['県名' => [], '市町村名' => []],
-    '中部道地方' => ['県名' => [], '市町村名' => []],
-    '近畿道地方' => ['県名' => [], '市町村名' => []],
-    '四国道地方' => ['県名' => [], '市町村名' => []],
-    '中国道地方' => ['県名' => [], '市町村名' => []],
-    '九州道地方' => ['県名' => [], '市町村名' => []]
+$Chihou = array(
+    '北海道地方',
+    '東北地方',
+    '関東地方',
+    '中部地方',
+    '近畿地方',
+    '中国地方',
+    '四国地方',
+    '九州地方',
   );
-  #var_dump($Chihou);
-  #var_dump($Chihou['北海道地方']['市町村名'][0]);
-  #var_dump($Chihou['北海道地方']['県名'][0]);
-  if( ( array_search('北海道地方', $Chihou) === false ) ) {
-    foreach ($data[0] as $key => $value) {
-      #$Chihou['北海道地方']['県名'] = [];
+// var_dump($Chihou);
+  $n=0;
+  foreach ($data[0] as $key => $value) {
+      $n = test($value['id']);
+      $result[$Chihou[$n]]['県名'][] = $value['name'];
       foreach ($value['city'] as $city_key => $city_value) {
-        #$Chihou['北海道地方']['市町村名'] = [];
-        #市区町村が取れてる
-        #var_dump($city_value['city']);
-        $Chihou['北海道地方']['市町村名'][] = $city_value['city'];
+         $result[$Chihou[$n]]['市区町村'][] = $city_value['city'];
       }
-    #各都道府県が取れてる
-    #var_dump($value['name']);
-    $Chihou['北海道地方']['県名'][] = $value['name'];
-    }
   }
-  var_dump($Chihou)
+  var_dump($result);
+  function test($num){
+    $n=0;
+      $pref = $num;
+      if ($pref == "01"){
+        $n = 0;
+      }elseif ($pref == "02"||$pref == "03"||$pref == "04"||$pref == "05"||$pref == "06"||$pref == "07"){
+          $n = 1;
+      }elseif ($pref == "08"||$pref == "09"||$pref == "10"||$pref == "11"||$pref == "12"||$pref == "13"||$pref == "14"){
+          $n = 2;
+      }elseif ($pref == "15"||$pref == "16"||$pref == "17"||$pref == "18"||$pref == "19"||$pref == "20"||$pref == "21"||$pref == "22"||$pref == "23")
+      {
+          $n = 3;
+      }elseif ($pref == "24"||$pref == "25"||$pref == "26"||$pref == "27"||$pref == "28"||$pref == "29"||$pref == "30")
+      {
+          $n = 4;
+      }elseif ($pref == "31"||$pref == "32"||$pref == "33"||$pref == "34"||$pref == "35")
+      {
+          $n = 5;
+      }elseif ($pref == "36"||$pref == "37"||$pref == "38"||$pref == "39")
+      {
+          $n = 6;
+      }elseif ($pref == "40"||$pref == "41"||$pref == "42"||$pref == "43"||$pref == "44"||$pref == "45"||$pref == "46"||$pref == "47")
+      {
+          $n = 7;
+      }
+    return $n;
+}
 ?>
 </pre>
