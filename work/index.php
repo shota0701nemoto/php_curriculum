@@ -359,19 +359,23 @@ foreach ($data[0] as $key => $value) {
     '中国道地方' => ['県名' => [], '市町村名' => []],
     '九州道地方' => ['県名' => [], '市町村名' => []]
   );
-  #var_dump($Chihou['北海道地方']['県名']['市町村名']);
-  #var_dump($Chihou['北海道地方']['県名']);
-  foreach ($data[0] as $key => $value) {
-    foreach ($value['city'] as $city_key => $city_value) {
-      #市区町村が取れてる
-      #var_dump($city_value['city']);
-    }
-    $Chihou['北海道地方']['県名']['市町村名'] = $city_value['city'];
-    
+  #var_dump($Chihou);
+  #var_dump($Chihou['北海道地方']['市町村名'][0]);
+  #var_dump($Chihou['北海道地方']['県名'][0]);
+  if( ( array_search('北海道地方', $Chihou) === false ) ) {
+    foreach ($data[0] as $key => $value) {
+      #$Chihou['北海道地方']['県名'] = [];
+      foreach ($value['city'] as $city_key => $city_value) {
+        #$Chihou['北海道地方']['市町村名'] = [];
+        #市区町村が取れてる
+        #var_dump($city_value['city']);
+        $Chihou['北海道地方']['市町村名'][] = $city_value['city'];
+      }
     #各都道府県が取れてる
     #var_dump($value['name']);
+    $Chihou['北海道地方']['県名'][] = $value['name'];
+    }
   }
-  $Chihou['北海道地方']['県名'] = $value['name'];
   var_dump($Chihou)
 ?>
 </pre>
