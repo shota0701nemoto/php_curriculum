@@ -392,5 +392,10 @@ $Chihou = array(
       }
     return $n;
 }
+
+
+
+
+
 ?>
 </pre>
